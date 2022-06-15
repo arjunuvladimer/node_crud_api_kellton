@@ -15,5 +15,15 @@ const router = express.router()
 // Request client for data
 // Response to get it from Database
 router.post('/create', (req,res) => {
+    // Two Parameters
+    // 1. Object/Document that you need to store inside the collection
+    // 2. Callback if it is successful we are going to get a response from database
+    // any error we are going to display the error
 
+    UserModel.create({
+        firstName: req.body.firstName,
+        lastName: req.body.lastName,
+        address: req.body.address,
+        phone: req.body.phone
+    },)
 })

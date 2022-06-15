@@ -23,4 +23,4 @@ const UserSchema = new mongoose.Schema({
 
 // Model is trying to create a schema based on the options we represented 
 // using mongoose.Schema 
-exports.module = mongoose.model('user',UserSchema)
+module.exports = mongoose.model('user',UserSchema)
