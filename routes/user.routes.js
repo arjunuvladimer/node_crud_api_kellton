@@ -1,10 +1,9 @@
 // Express js for Routing
 const express = require('express')
 
-// Require User Model from Model
-const UserModel = require('../model/users.model')
+const controller = require('../controller/user.controller')
 
-const router = express.router()
+const router = express.Router()
 
 // CRUD => Create, Read, Update, Delete
 
@@ -14,16 +13,16 @@ const router = express.router()
 // 2. Callback function where in you are going to send the data to database
 // Request client for data
 // Response to get it from Database
-router.post('/create', (req,res) => {
-    // Two Parameters
-    // 1. Object/Document that you need to store inside the collection
-    // 2. Callback if it is successful we are going to get a response from database
-    // any error we are going to display the error
+router.post('/create', controller.create)
 
-    UserModel.create({
-        firstName: req.body.firstName,
-        lastName: req.body.lastName,
-        address: req.body.address,
-        phone: req.body.phone
-    },)
-})
+// 2. Read 
+router.get('/read', controller.read)
+
+// 3. Update By Id
+router.put('/update/:id', controller.update)
+
+// 4. Delete By Id
+router.delete('/delete/:id', controller.deleteUser)
+
+module.exports = router
+
